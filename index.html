@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueVoice AI – Emergency Guidance</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/medical-heart.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <i class="fas fa-ambulance"></i>
+                <span>RescueVoice AI</span>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#emergency" class="nav-link"><i class="fas fa-plus-circle"></i> Emergency</a></li>
+                <li><a href="#guidance" class="nav-link"><i class="fas fa-list-ol"></i> Guidance</a></li>
+                <li><a href="#severe" class="nav-link"><i class="fas fa-phone-alt"></i> Severe Emergency</a></li>
+                <li><a href="#hospitals" class="nav-link"><i class="fas fa-hospital"></i> Hospitals</a></li>
+                <li><a href="#learn" class="nav-link"><i class="fas fa-book-medical"></i> Learn</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content - All Sections -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Emergency AI Guidance When You Need It Most</h1>
+                        <p class="hero-subtitle">Voice-guided, step-by-step assistance for medical emergencies with multi-language support</p>
+                        
+                        <div class="hero-buttons">
+                            <a href="#emergency" class="btn btn-emergency btn-large">
+                                <i class="fas fa-play-circle"></i> START EMERGENCY ASSISTANCE
+                            </a>
+                            <a href="#severe" class="btn btn-secondary btn-large">
+                                <i class="fas fa-phone-alt"></i> SEVERE EMERGENCY - CALL 911
+                            </a>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="feature">
+                                <i class="fas fa-microphone-alt"></i>
+                                <span>Voice & Text Input</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-language"></i>
+                                <span>Multi-Language Support</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hospital Locator</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>First Aid Guidance</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Available</p>
+                    </div>
+                    <div class="stat">
+                        <h3>3</h3>
+                        <p>Languages</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Step-by-Step</h3>
+                        <p>Guidance</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Auto-Detect</h3>
+                        <p>Severe Cases</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Input Section -->
+        <section id="emergency" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> Describe the Emergency</h2>
+                    <p>Tell us what happened using voice or text. Our AI will analyze and provide guidance.</p>
+                </div>
+                
+                <div class="card emergency-card">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <h3>Select Language</h3>
+                        <div class="language-buttons">
+                            <button class="lang-btn active" data-lang="en">
+                                <i class="fas fa-globe"></i> English
+                            </button>
+                            <button class="lang-btn" data-lang="ur">
+                                <i class="fas fa-globe"></i> Urdu
+                            </button>
+                            <button class="lang-btn" data-lang="ru">
+                                <i class="fas fa-globe"></i> Roman Urdu
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Voice Input -->
+                    <div class="voice-input-container">
+                        <h3><i class="fas fa-microphone"></i> Voice Input</h3>
+                        <div class="voice-controls">
+                            <button id="voiceBtn" class="btn voice-btn">
+                                <i class="fas fa-microphone"></i> Start Speaking
+                            </button>
+                            <div class="voice-status" id="voiceStatus">
+                                Click button and describe the emergency
+                            </div>
+                        </div>
+                        <div class="voice-output" id="voiceOutput">
+                            <!-- Voice transcription appears here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Text Input -->
+                    <div class="text-input-container">
+                        <h3><i class="fas fa-keyboard"></i> Or Type Description</h3>
+                        <textarea id="emergencyText" placeholder="Example: Person is choking and cannot breathe. They are conscious but panicking." rows="4"></textarea>
+                    </div>
+                    
+                    <!-- Emergency Analysis -->
+                    <div class="analysis-container">
+                        <button id="analyzeBtn" class="btn btn-primary btn-large">
+                            <i class="fas fa-search"></i> Analyze Emergency
+                        </button>
+                        
+                        <div id="analysisResult" class="analysis-result hidden">
+                            <div class="result-header">
+                                <h3><i class="fas fa-diagnoses"></i> AI Analysis Result</h3>
+                                <div class="severity-badge" id="severityBadge">Medium</div>
+                            </div>
+                            <div class="result-content">
+                                <p id="emergencyType">Detected: <strong>Choking Emergency</strong></p>
+                                <p id="recommendedAction">Recommended: <strong>Perform Heimlich Maneuver</strong></p>
+                                <div class="actions">
+                                    <a href="#guidance" class="btn btn-primary">
+                                        <i class="fas fa-play"></i> Start Guidance
+                                    </a>
+                                    <button id="severeCheckBtn" class="btn btn-secondary">
+                                        <i class="fas fa-exclamation-triangle"></i> Check If Severe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step-by-Step Guidance Section -->
+        <section id="guidance" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-list-ol"></i> Step-by-Step Guidance</h2>
+                    <p>Follow these instructions carefully. Voice guidance will read each step aloud.</p>
+                </div>
+                
+                <div class="guidance-container">
+                    <div class="guidance-sidebar">
+                        <h3>Emergency Types</h3>
+                        <ul class="emergency-types">
+                            <li><button class="emergency-type-btn active" data-type="choking">Choking</button></li>
+                            <li><button class="emergency-type-btn" data-type="cpr">CPR / Unconscious</button></li>
+                            <li><button class="emergency-type-btn" data-type="bleeding">Severe Bleeding</button></li>
+                            <li><button class="emergency-type-btn" data-type="burn">Burns</button></li>
+                            <li><button class="emergency-type-btn" data-type="fracture">Broken Bone</button></li>
+                            <li><button class="emergency-type-btn" data-type="heart">Heart Attack</button></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guidance-steps">
+                        <div class="steps-header">
+                            <h3 id="currentEmergency">Choking Emergency</h3>
+                            <div class="step-controls">
+                                <button id="prevStep" class="btn btn-small">
+                                    <i class="fas fa-chevron-left"></i> Previous
+                                </button>
+                                <button id="nextStep" class="btn btn-primary btn-small">
+                                    Next <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="step-indicator">
+                            <div class="step-progress">
+                                <div class="step-progress-bar" id="stepProgressBar"></div>
+                            </div>
+                            <div class="step-count">
+                                Step <span id="currentStepNum">1</span> of <span id="totalSteps">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="step-content">
+                            <div class="step-card active" id="step1">
+                                <div class="step-number">1</div>
+                                <div class="step-details">
+                                    <h4>Ask If They're Choking</h4>
+                                    <p>Ask the person: "Are you choking?" If they can cough or speak, encourage them to keep coughing to try to dislodge the object.</p>
+                                    <div class="step-voice">
+                                        <button class="btn-voice-step" data-step="1">
+                                            <i class="fas fa-volume-up"></i> Hear This Step
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="step-card" id="step2">
+                                <div class="step-number">2</div>
+                                <div class="step-details">
+                                    <h4>Perform Back Blows</h4>
+                                    <p>Stand behind them and slightly to one side. Support their chest with one hand. Lean them forward so the object blocking their airway will come out of their mouth, not move further down.</p>
+                                    <div class="step-voice">
+                                        <button class="btn-voice-step" data-step="2">
+                                            <i class="fas fa-volume-up"></i> Hear This Step
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- More steps would continue here -->
+                        </div>
+                        
+                        <div class="voice-controls-full">
+                            <button id="startVoiceGuidance" class="btn btn-primary">
+                                <i class="fas fa-play-circle"></i> Start Voice Guidance
+                            </button>
+                            <button id="pauseVoiceGuidance" class="btn btn-secondary">
+                                <i class="fas fa-pause"></i> Pause
+                            </button>
+                            <button id="repeatStep" class="btn btn-small">
+                                <i class="fas fa-redo"></i> Repeat Step
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Severe Emergency Section -->
+        <section id="severe" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Severe Emergency Detection</h2>
+                    <p>Automatically detect severe emergencies and contact emergency services</p>
+                </div>
+                
+                <div class="severe-container">
+                    <div class="severe-alert">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <h3>Severe Emergency Detected!</h3>
+                            <p>The system has detected a life-threatening situation. Emergency services should be contacted immediately.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="severe-actions">
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h4>Auto-Call Emergency Services</h4>
+                            <p>System will automatically call local emergency number (911) with your location</p>
+                            <button id="autoCallBtn" class="btn btn-emergency">
+                                <i class="fas fa-phone"></i> CALL 911 NOW
+                            </button>
+                        </div>
+                        
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-sms"></i>
+                            </div>
+                            <h4>Send Emergency Message</h4>
+                            <p>Automatically send your location and emergency details to emergency contacts</p>
+                            <button id="autoMessageBtn" class="btn btn-secondary">
+                                <i class="fas fa-paper-plane"></i> SEND EMERGENCY SMS
+                            </button>
+                        </div>
+                        
+                        <div class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4>Share Live Location</h4>
+                            <p>Share your real-time location with emergency responders</p>
+                            <button id="shareLocationBtn" class="btn btn-primary">
+                                <i class="fas fa-share-alt"></i> SHARE LOCATION
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="severe-checklist">
+                        <h3>Severe Emergency Symptoms</h3>
+                        <p>If you experience any of these, use this section immediately:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Unconsciousness or unresponsiveness</li>
+                            <li><i class="fas fa-check-circle"></i> Difficulty breathing or choking</li>
+                            <li><i class="fas fa-check-circle"></i> Severe bleeding that won't stop</li>
+                            <li><i class="fas fa-check-circle"></i> Chest pain or pressure</li>
+                            <li><i class="fas fa-check-circle"></i> Sudden severe pain</li>
+                            <li><i class="fas fa-check-circle"></i> Sudden dizziness or weakness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nearby Hospitals Section -->
+        <section id="hospitals" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-hospital"></i> Find Nearby Hospitals</h2>
+                    <p>Locate the nearest medical facilities with emergency services</p>
+                </div>
+                
+                <div class="hospitals-container">
+                    <div class="map-container">
+                        <div class="map-header">
+                            <h3><i class="fas fa-map-marked-alt"></i> Emergency Medical Facilities</h3>
+                            <button id="refreshLocation" class="btn btn-small">
+                                <i class="fas fa-sync-alt"></i> Refresh Location
+                            </button>
+                        </div>
+                        <div class="map-placeholder" id="hospitalMap">
+                            <div class="map-overlay">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Interactive Hospital Map</h3>
+                                <p>Showing hospitals within 10km radius</p>
+                                <button class="btn btn-primary" id="loadMapBtn">
+                                    <i class="fas fa-map"></i> Load Interactive Map
+                                </button>
+                            </div>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <div class="legend-color emergency"></div>
+                                <span>Emergency Department</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color urgent"></div>
+                                <span>Urgent Care</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color clinic"></div>
+                                <span>Clinic</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hospitals-list">
+                        <h3>Nearest Hospitals</h3>
+                        <div class="hospital-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Emergency</button>
+                            <button class="filter-btn">24/7</button>
+                            <button class="filter-btn">With Ambulance</button>
+                        </div>
+                        
+                        <div class="hospital-cards">
+                            <div class="hospital-card">
+                                <div class="hospital-header">
+                                    <h4>City General Hospital</h4>
+                                    <div class="hospital-distance">1.2 km</div>
+                                </div>
+                                <p class="hospital-address">
+                                    <i class="fas fa-map-marker-alt"></i> 123 Medical Center Dr, City
+                                </p>
+                                <p class="hospital-phone">
+                                    <i class="fas fa-phone"></i> (555) 123-4567
+                                </p>
+                                <div class="hospital-services">
+                                    <span class="service-tag emergency">Emergency Dept</span>
+                                    <span class="service-tag">24/7</span>
+                                    <span class="service-tag">Ambulance</span>
+                                </div>
+                                <div class="hospital-actions">
+                                    <button class="btn btn-small call-btn">
+                                        <i class="fas fa-phone"></i> Call
+                                    </button>
+                                    <button class="btn btn-small directions-btn">
+                                        <i class="fas fa-directions"></i> Directions
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- More hospital cards would go here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn / First Aid Section -->
+        <section id="learn" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-medical"></i> First Aid Education</h2>
+                    <p>Learn essential first aid techniques for common emergencies</p>
+                </div>
+                
+                <div class="learn-container">
+                    <div class="learn-categories">
+                        <h3>First Aid Categories</h3>
+                        <div class="category-buttons">
+                            <button class="category-btn active" data-category="all">All</button>
+                            <button class="category-btn" data-category="cpr">CPR & Breathing</button>
+                            <button class="category-btn" data-category="wounds">Wounds & Bleeding</button>
+                            <button class="category-btn" data-category="fractures">Fractures & Sprains</button>
+                            <button class="category-btn" data-category="burns">Burns</button>
+                            <button class="category-btn" data-category="poisoning">Poisoning</button>
+                        </div>
+                    </div>
+                    
+                    <div class="learn-cards">
+                        <div class="learn-card" data-category="cpr">
+                            <div class="learn-card-image cpr">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="learn-card-content">
+                                <h4>CPR for Adults</h4>
+                                <p>Step-by-step guide for performing CPR on adults in cardiac arrest</p>
+                                <div class="learn-card-actions">
+                                    <button class="btn btn-small">
+                                        <i class="fas fa-play"></i> Start Lesson
+                                    </button>
+                                    <button class="btn btn-small">
+                                        <i class="fas fa-download"></i> PDF Guide
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="learn-card" data-category="wounds">
+                            <div class="learn-card-image wounds">
+                                <i class="fas fa-band-aid"></i>
+                            </div>
+                            <div class="learn-card-content">
+                                <h4>Control Bleeding</h4>
+                                <p>How to stop severe bleeding using direct pressure and tourniquets</p>
+                                <div class="learn-card-actions">
+                                    <button class="btn btn-small">
+                                        <i class="fas fa-play"></i> Start Lesson
+                                    </button>
+                                    <button class="btn btn-small">
+                                        <i class="fas fa-download"></i> PDF Guide
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- More learn cards would go here -->
+                    </div>
+                    
+                    <div class="emergency-numbers">
+                        <h3>Emergency Contact Numbers</h3>
+                        <div class="number-cards">
+                            <div class="number-card">
+                                <div class="number-icon">
+                                    <i class="fas fa-ambulance"></i>
+                                </div>
+                                <h4>Emergency Services</h4>
+                                <div class="number">911</div>
+                                <p>Police, Fire, Ambulance</p>
+                            </div>
+                            <div class="number-card">
+                                <div class="number-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <h4>Poison Control</h4>
+                                <div class="number">1-800-222-1222</div>
+                                <p>24/7 Poison Help Line</p>
+                            </div>
+                            <div class="number-card">
+                                <div class="number-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>Heart Attack</h4>
+                                <div class="number">911</div>
+                                <p>Chest pain, shortness of breath</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Disclaimer Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> About & Disclaimer</h2>
+                    <p>Important information about using RescueVoice AI</p>
+                </div>
+                
+                <div class="about-container">
+                    <div class="about-content">
+                        <div class="about-card">
+                            <h3><i class="fas fa-shield-alt"></i> Important Disclaimer</h3>
+                            <p><strong>RescueVoice AI is an assistance tool only and not a substitute for professional medical care.</strong></p>
+                            <p>In any emergency, always call your local emergency number (911 in the US) first. This tool provides guidance based on common first aid protocols but cannot diagnose or treat medical conditions.</p>
+                            <p>The voice guidance and step-by-step instructions are for informational purposes. Always follow the advice of trained medical professionals.</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <h3><i class="fas fa-user-shield"></i> Privacy Policy</h3>
+                            <p>We respect your privacy:</p>
+                            <ul>
+                                <li>Voice recordings are processed locally and not stored on servers</li>
+                                <li>Location data is only used to find nearby hospitals and is not tracked</li>
+                                <li>No personal health information is collected or shared</li>
+                                <li>This tool works offline for basic guidance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="about-card">
+                            <h3><i class="fas fa-language"></i> Multi-Language Support</h3>
+                            <p>RescueVoice AI supports:</p>
+                            <div class="language-support">
+                                <div class="language-item">
+                                    <strong>English</strong>
+                                    <p>Full voice and text support</p>
+                                </div>
+                                <div class="language-item">
+                                    <strong>Urdu</strong>
+                                    <p>Text guidance and basic voice commands</p>
+                                </div>
+                                <div class="language-item">
+                                    <strong>Roman Urdu</strong>
+                                    <p>Text guidance in Roman script</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-card">
+                            <h3><i class="fas fa-question-circle"></i> How It Works</h3>
+                            <p>RescueVoice AI uses:</p>
+                            <ul>
+                                <li>Web Speech API for voice recognition and synthesis</li>
+                                <li>Emergency response algorithms based on Red Cross guidelines</li>
+                                <li>Location services to find nearby medical facilities</li>
+                                <li>Responsive design for use on any device</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="emergency-reminder">
+                        <div class="reminder-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="reminder-content">
+                            <h3>In a Life-Threatening Emergency</h3>
+                            <p><strong>Call 911 (or your local emergency number) immediately.</strong> Do not rely solely on this app for critical emergencies.</p>
+                            <a href="#severe" class="btn btn-emergency">
+                                <i class="fas fa-phone-alt"></i> GO TO SEVERE EMERGENCY SECTION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RescueVoice AI</h3>
+                    <p>AI-powered emergency guidance when you need it most.</p>
+                    <p>Always call 911 for life-threatening emergencies.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#emergency"><i class="fas fa-chevron-right"></i> Emergency Input</a></li>
+                        <li><a href="#guidance"><i class="fas fa-chevron-right"></i> Step-by-Step</a></li>
+                        <li><a href="#severe"><i class="fas fa-chevron-right"></i> Severe Emergency</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Emergency Numbers</h3>
+                    <ul class="emergency-numbers-list">
+                        <li><strong>Emergency:</strong> 911</li>
+                        <li><strong>Poison Control:</strong> 1-800-222-1222</li>
+                        <li><strong>Suicide Prevention:</strong> 988</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 RescueVoice AI. This is a demonstration tool for educational purposes.</p>
+                <p>Not for use in actual emergencies. Always call professional medical services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
